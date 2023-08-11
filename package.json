@@ -1,0 +1,14 @@
+{
+  "name": "to-so-list",
+  "version": "1.0.0",
+  "description": "projeto para aprender nodeJs ",
+  "main": "inde.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Edu Tech",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
