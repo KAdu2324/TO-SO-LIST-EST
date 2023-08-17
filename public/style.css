@@ -7,21 +7,52 @@
 }
 
 body {
-    background-color: #202024;
+    background: linear-gradient(45deg,#000000,#000000, #DDE6ED);
+    background-size: 300% 300%;
+    animation: colors 25s ease infinite;
     width: 100%;
     height: 100%;
     color: #fff;
 }
 
+@keyframes colors {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
 header {
-    background-color: #005290;
+    background: linear-gradient(45deg, #071222,#19376D,#000000,#DDE6ED);
+    background-size: 300% 300%;
+    animation: colors 25s ease infinite;
     padding: 3rem;
     margin: .5rem;
     text-align: center;
 }
 
+@keyframes colors {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
 header h1{
     padding-bottom: 3rem;
+    color:#fbfbfc;
+    font-style: italic;
+    
 }
 
 input {
@@ -52,7 +83,7 @@ button{
 }
 
 button:hover{
-    background-color: #004e14;
+    background-color: #064663;
     color:#fff ;
 }
 
@@ -100,7 +131,7 @@ ul li:nth-child(odd){
 }
 
 ul li:hover{
-    background: #5a5a5a;
+    background: #19376D;
 
 }
 
@@ -112,8 +143,9 @@ a.btnUpdate{
 }
 
 a.btnUpdate:hover{
-    background: #3643f4;
-    color: #fff;
+    background: #d0d2d5;
+    color: #19376D
+    ;
 }
 
 a.btnDelete{

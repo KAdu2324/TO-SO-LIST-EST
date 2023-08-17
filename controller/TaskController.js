@@ -1,22 +1,30 @@
 const { set } = require("mongoose");
 const Task = require("../model/Task");
 
-let message = "";
+//quando nao preencher os dados no front aparecer a mensagem de alert
+let message = ""; 
 let type = "";
 
+
+//motivo de usar Async e comunicaçao com o banco de pergunta e resposta
+//getAll umas das forma de criar uma função 
 const getAllTasks = async (req, res) => {
   try {
     setTimeout(() => {
       message = "";
-    }, 1000);
+    }, 1000);// aqui criei um deley ao clicar de um segundo 
+
+    //aqui criaçao do dados para preencher no front os dados
+
     const tasksList = await Task.find();
-    return res.render("index", {
+    return res.render("index", { // abaixo sao os metodos que esta separado da rota 
       tasksList,
       task: null,
       taskDelete: null,
       message,
       type,
     });
+    //se não preencher ficar como null, aparecer a messangem de erro 
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
@@ -40,7 +48,7 @@ const createTask = async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 };
-
+//criando o tabela no banco com dados inserido na tela
 const getById = async (req, res) => {
   try {
     const tasksList = await Task.find();
@@ -55,7 +63,7 @@ const getById = async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 };
-
+// updateOneTask onde realiza alteração do texto e modificação ja altera no banco tambem
 const updateOneTask = async (req, res) => {
   try {
     const task = req.body;
@@ -67,7 +75,7 @@ const updateOneTask = async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 };
-
+// DeleteOneTask caso eu queira exluir algum dados inserido na minha lista
 const deleteOneTask = async (req, res) => {
   try {
     await Task.deleteOne({ _id: req.params.id });
@@ -82,7 +90,8 @@ const deleteOneTask = async (req, res) => {
 const taskCheck = async (req, res) => {
   try{
     const task = await Task.findOne({ _id: req.params.id});
- // Condicional Ternaria
+
+ // Condicional Ternaria é um operador condicional do Javascript, normalmente utilizado como atalho para o if
     task.check ? task.check = false : task.check = true;
     await Task.updateOne({ _id: req.params.id}, task)
     res.redirect("/");
@@ -90,7 +99,7 @@ const taskCheck = async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 }
-
+//aqui estao todos modulos que foram criados, conjuto de codigo separado no arquivos 
 module.exports = {
   getAllTasks,
   createTask,
